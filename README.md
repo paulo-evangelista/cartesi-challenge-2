@@ -1,5 +1,7 @@
 # Code Challenge 2 - Cartesi <> Inteli masterclass
 
+> Última atualização: `Jun 7 1:34am`
+
 desafio: [henriquemarlon/cartesi-code-challenge-2](https://github.com/henriquemarlon/cartesi-code-challenge-2/tree/main)
 
 https://github.com/paulo-evangelista/cartesi-challenge-2/assets/99093520/ae86c29b-5c51-4cab-a2bc-11fc92f2ed90
@@ -64,3 +66,4 @@ cartesi send generic \
 ```
 
 Acessando o explorer do nó cartesi e conectando o endpoint do GraphQL ao explorer, que é exposto pelo nó, conseguimos ver o notice que foi enviado como resposta para nosso advance, e temos finalmente acesso à mensagem de sucesso!
+
