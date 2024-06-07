@@ -22,8 +22,6 @@ Portanto, o input correto é:
    - A função que decide se a input é válida estava já compilada, em binário
    - Caso o payload do advance esteja correto, o dapp envia um [notice](https://docs.cartesi.io/cartesi-rollups/1.3/rollups-apis/backend/notices/) para o nó Cartesi
 
-### Como Resolvi
-
 O primeiro passo foi tentar entender o que essa função já compilada faz. Tentei copiar o binário e descompilar no meu computador com a biblioteca `uncompyle6`, mas só dava erro. Aí lembrei que a Cartesi Machine roda na arquitetura RISC-V, portanto esse código compilado tem instruções que não são compativeis com meu computador x86.
 
 Ao invés de subir uma VM RISC-V para tentar fazer a desassemblagem, utilizei o próprio Dapp para transformar o bytecode em mnemonics de RISC-V e printar elas no terminal.
@@ -66,4 +64,15 @@ cartesi send generic \
 ```
 
 Acessando o explorer do nó cartesi e conectando o endpoint do GraphQL ao explorer, que é exposto pelo nó, conseguimos ver o notice que foi enviado como resposta para nosso advance, e temos finalmente acesso à mensagem de sucesso!
-
+ 
+> [!NOTE]
+> 
+> **Correção**
+> 
+> Depois de dar uma revisada, percebi que toda a parte sobre o binário e o RISC-V está errada.
+>
+> O bytecode no Dapp não é código de máquina, e sim bytecode python, portanto ele independe da arquitetura do computador: Ele depende do seu **interpretador**
+>
+> A minha desassemblagem deu errado por outro motivo: **A versão do python.** A máquina usa 3.10, e eu estava tentando interpretar python 3.12 😢
+>
+> De qualquer jeito, os passos que usei para resolver o problema continuam verdadeiros.
