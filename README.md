@@ -53,4 +53,14 @@ Sabendo de tudo isso, fica fácil!
 
 Com o dapp rodando, utilizei o `Cartesi send generic` para enviar um [advance](https://docs.cartesi.io/cartesi-rollups/1.3/rollups-apis/backend/introduction/) com o payload correto.
 
-Acessando o explorer do nó cartesi, conseguimos ver o notice que foi enviado como resposta para nosso advance, e, conectando o endpoint do GraphQL ao explorer, temos finalmente acesso à mensagem de sucesso!
+```sh
+cartesi send generic \
+    --dapp=0xab7528bb862fb57e8a2bcd567a2e929a0be56a5e \
+    --chain-id=31337 \
+    --rpc-url=http://127.0.0.1:8545 \
+    --mnemonic-passphrase='test test test test test test test test test test test junk' \
+    --input='{"guess":3, "birth_year_minus_the_guess": 1593}'
+
+```
+
+Acessando o explorer do nó cartesi e conectando o endpoint do GraphQL ao explorer, que é exposto pelo nó, conseguimos ver o notice que foi enviado como resposta para nosso advance, e temos finalmente acesso à mensagem de sucesso!
