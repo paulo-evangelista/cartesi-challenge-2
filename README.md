@@ -20,7 +20,7 @@ Portanto, o input correto é:
    - A função que decide se a input é válida estava já compilada, em binário
    - Caso o payload do advance esteja correto, o dapp envia um [notice](https://docs.cartesi.io/cartesi-rollups/1.3/rollups-apis/backend/notices/) para o nó Cartesi
 
-### Primeiro passo
+### Como Resolvi
 
 O primeiro passo foi tentar entender o que essa função já compilada faz. Tentei copiar o binário e descompilar no meu computador com a biblioteca `uncompyle6`, mas só dava erro. Aí lembrei que a Cartesi Machine roda na arquitetura RISC-V, portanto esse código compilado tem instruções que não são compativeis com meu computador x86.
 
@@ -48,3 +48,9 @@ def claim(guess, birth_year_minus_the_guess):
         print("Error calculating GCD of a = 65535 and b = (2**16 >> 7) - 0x17.")
         return False
 ```
+
+Sabendo de tudo isso, fica fácil!
+
+Com o dapp rodando, utilizei o `Cartesi send generic` para enviar um [advance](https://docs.cartesi.io/cartesi-rollups/1.3/rollups-apis/backend/introduction/) com o payload correto.
+
+Acessando o explorer do nó cartesi, conseguimos ver o notice que foi enviado como resposta para nosso advance, e, conectando o endpoint do GraphQL ao explorer, temos finalmente acesso à mensagem de sucesso!
